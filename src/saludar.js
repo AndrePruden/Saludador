@@ -1,33 +1,43 @@
-function saludar(nombre, edad, genero) {
-
+function saludar(nombre, edad, genero, idioma) {
   var fechaActual = new Date();
   var hora = fechaActual.getHours();
-  console.log(hora);
-  resultado = "";
+  var resultado = "";
 
-  if(hora > 12 && hora < 19)
-  {
-    resultado = "Buenas tardes ";
-  }
-  else if(hora < 12)
-  {
-    resultado = "Buenas dias ";
-  }
-  else
-    resultado = "Buenas noches ";
+  if (idioma === "es") {
+    if (hora > 12 && hora < 19) {
+      resultado = "Buenas tardes ";
+    } else if (hora < 12) {
+      resultado = "Buenos días ";
+    } else {
+      resultado = "Buenas noches ";
+    }
 
-  if(edad > 30 && genero === "masculino")
-  {
-    resultado += "Sr " + nombre;
+    if (edad > 30 && genero === "masculino") {
+      resultado += "Sr " + nombre;
+    } else if (edad > 30 && genero === "femenino") {
+      resultado += "Sra " + nombre;
+    } else {
+      resultado += nombre;
+    }
+  } else if (idioma === "en") {
+    if (hora > 12 && hora < 19) {
+      resultado = "Good afternoon ";
+    } else if (hora < 12) {
+      resultado = "Good morning ";
+    } else {
+      resultado = "Good evening ";
+    }
+
+    if (edad > 30 && genero === "masculino") {
+      resultado += "Mr " + nombre;
+    } else if (edad > 30 && genero === "femenino") {
+      resultado += "Mrs " + nombre;
+    } else {
+      resultado += nombre;
+    }
   }
-  else if(edad > 30 && genero === "femenino")
-  {
-    resultado += "Sra " + nombre;
-  }
-  else
-    resultado += nombre;
-  return resultado
+
+  return resultado;
 }
-
 
 export default saludar;
